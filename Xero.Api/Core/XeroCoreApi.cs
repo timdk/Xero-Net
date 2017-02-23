@@ -41,6 +41,7 @@ namespace Xero.Api.Core
         public IAccountsEndpoint Accounts { get; private set; }
         public AllocationsEndpoint Allocations { get; private set; }
         public AttachmentsEndpoint Attachments { get; private set; }
+        public IAssetsEndpoint Assets { get; private set; }
         public IBankTransactionsEndpoint BankTransactions { get; private set; }
         public IBankTransfersEndpoint BankTransfers { get; private set; }
         public IBrandingThemesEndpoint BrandingThemes { get; private set; }
@@ -79,6 +80,7 @@ namespace Xero.Api.Core
 
             Accounts = new AccountsEndpoint(Client);
             Allocations = new AllocationsEndpoint(Client);
+            Assets = new AssetsEndpoint(Client);
             Attachments = new AttachmentsEndpoint(Client);
             BankTransactions = new BankTransactionsEndpoint(Client);
             BankTransfers = new BankTransfersEndpoint(Client);
@@ -140,6 +142,30 @@ namespace Xero.Api.Core
         public Account Update(Account item)
         {
             return Accounts.Update(item);
+        }
+
+        #endregion
+
+        #region Assets
+
+        public IEnumerable<Asset> Create(IEnumerable<Asset> items)
+        {
+            return Assets.Create(items);
+        }
+
+        public IEnumerable<Asset> Update(IEnumerable<Asset> items)
+        {
+            return Assets.Update(items);
+        }
+
+        public Asset Create(Asset item)
+        {
+            return Assets.Create(item);
+        }
+
+        public Asset Update(Asset item)
+        {
+            return Assets.Update(item);
         }
 
         #endregion
@@ -535,6 +561,7 @@ namespace Xero.Api.Core
         public void SummarizeErrors(bool summarize)
         {
             Accounts.SummarizeErrors(summarize);
+            Assets.SummarizeErrors(summarize);
             BankTransactions.SummarizeErrors(summarize);
             BankTransfers.SummarizeErrors(summarize);
             Contacts.SummarizeErrors(summarize);
