@@ -42,6 +42,8 @@ namespace Xero.Api.Core
         public AllocationsEndpoint Allocations { get; private set; }
         public AttachmentsEndpoint Attachments { get; private set; }
         public IAssetsEndpoint Assets { get; private set; }
+
+        public IAssetTypesEndpoint AssetTypes { get; private set; }
         public IBankTransactionsEndpoint BankTransactions { get; private set; }
         public IBankTransfersEndpoint BankTransfers { get; private set; }
         public IBrandingThemesEndpoint BrandingThemes { get; private set; }
@@ -81,6 +83,7 @@ namespace Xero.Api.Core
             Accounts = new AccountsEndpoint(Client);
             Allocations = new AllocationsEndpoint(Client);
             Assets = new AssetsEndpoint(Client);
+            AssetTypes = new AssetTypesEndpoint(Client);
             Attachments = new AttachmentsEndpoint(Client);
             BankTransactions = new BankTransactionsEndpoint(Client);
             BankTransfers = new BankTransfersEndpoint(Client);
@@ -148,16 +151,6 @@ namespace Xero.Api.Core
 
         #region Assets
 
-        public IEnumerable<Asset> Create(IEnumerable<Asset> items)
-        {
-            return Assets.Create(items);
-        }
-
-        public IEnumerable<Asset> Update(IEnumerable<Asset> items)
-        {
-            return Assets.Update(items);
-        }
-
         public Asset Create(Asset item)
         {
             return Assets.Create(item);
@@ -166,6 +159,21 @@ namespace Xero.Api.Core
         public Asset Update(Asset item)
         {
             return Assets.Update(item);
+        }
+
+        #endregion
+
+        #region AssetTypes
+
+    
+        public AssetType Create(AssetType item)
+        {
+            return AssetTypes.Create(item);
+        }
+
+        public AssetType Update(AssetType item)
+        {
+            return AssetTypes.Update(item);
         }
 
         #endregion
@@ -561,7 +569,7 @@ namespace Xero.Api.Core
         public void SummarizeErrors(bool summarize)
         {
             Accounts.SummarizeErrors(summarize);
-            Assets.SummarizeErrors(summarize);
+            //Assets.SummarizeErrors(summarize);
             BankTransactions.SummarizeErrors(summarize);
             BankTransfers.SummarizeErrors(summarize);
             Contacts.SummarizeErrors(summarize);

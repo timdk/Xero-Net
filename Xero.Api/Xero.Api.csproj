@@ -50,6 +50,7 @@
     <Compile Include="Common\IXeroReadEndpoint.cs" />
     <Compile Include="Common\QueryGenerator.cs" />
     <Compile Include="Core\Endpoints\AllocationEndpoint.cs" />
+    <Compile Include="Core\Endpoints\AssetTypesEndpoint.cs" />
     <Compile Include="Core\Endpoints\AssetsEndpoint.cs" />
     <Compile Include="Core\Endpoints\AssociationsEndpoint.cs" />
     <Compile Include="Core\Endpoints\Base\FourDecimalPlacesEndpoint.cs" />
@@ -67,14 +68,17 @@
     <Compile Include="Core\Model\ContactTrackingCategory.cs" />
     <Compile Include="Core\Model\LinkedTransaction.cs" />
     <Compile Include="Core\Model\PurchaseOrder.cs" />
+    <Compile Include="Core\Model\Status\AssetStatus.cs" />
     <Compile Include="Core\Model\Status\LinkedTransactionStatus.cs" />
     <Compile Include="Core\Model\Status\PurchaseOrderStatus.cs" />
     <Compile Include="Core\Model\Status\TrackingOptionStatus.cs" />
+    <Compile Include="Core\Model\AssetType.cs" />
     <Compile Include="Core\Model\Types\BankAccountType.cs" />
     <Compile Include="Core\Model\Types\LinkedTransactionType.cs" />
     <Compile Include="Core\Model\Types\ObjectGroupType.cs" />
     <Compile Include="Core\Model\Types\ObjectType.cs" />
     <Compile Include="Core\Model\Types\SourceType.cs" />
+    <Compile Include="Core\Request\AssetTypesRequest.cs" />
     <Compile Include="Core\Request\AssetsRequest.cs" />
     <Compile Include="Core\Request\LinkedTransactionsRequest.cs" />
     <Compile Include="Core\Request\OnlineInvoicesRequest.cs" />
@@ -94,6 +98,7 @@
     <Compile Include="Core\Model\Types\OverpaymentType.cs" />
     <Compile Include="Common\CoreData.cs" />
     <Compile Include="Core\Model\Status\ValidationStatus.cs" />
+    <Compile Include="Core\Response\AssetTypesResponse.cs" />
     <Compile Include="Core\Response\AssetsResponse.cs" />
     <Compile Include="Core\Response\LinkedTransactionsResponse.cs" />
     <Compile Include="Core\Response\OnlineInvoicesResponse.cs" />

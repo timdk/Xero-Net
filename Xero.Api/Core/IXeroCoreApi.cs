@@ -12,6 +12,7 @@ namespace Xero.Api.Core
         AllocationsEndpoint Allocations { get; }
         AttachmentsEndpoint Attachments { get; }
         IAssetsEndpoint Assets { get; }
+        IAssetTypesEndpoint AssetTypes { get; }
         IBankTransactionsEndpoint BankTransactions { get; }
         IBankTransfersEndpoint BankTransfers { get; }
         IBrandingThemesEndpoint BrandingThemes { get; }
@@ -54,10 +55,12 @@ namespace Xero.Api.Core
         Account Update(Account item);
 
         //Assets
-        IEnumerable<Asset> Create(IEnumerable<Asset> items);
-        IEnumerable<Asset> Update(IEnumerable<Asset> items);
         Asset Create(Asset item);
         Asset Update(Asset item);
+
+        //AssetTypes
+        AssetType Create(AssetType item);
+        AssetType Update(AssetType item);
 
         //BankTransactions
         IEnumerable<BankTransaction> Create(IEnumerable<BankTransaction> items);

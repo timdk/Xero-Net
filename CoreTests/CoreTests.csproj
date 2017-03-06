@@ -74,6 +74,8 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Integration\AssetTypes\AssetTypesTest.cs" />
+    <Compile Include="Integration\Assets\AssetsTest.cs" />
     <Compile Include="Integration\Accounts\Update.cs" />
     <Compile Include="Integration\Accounts\Find.cs" />
     <Compile Include="Integration\Allocations\Add.cs" />
