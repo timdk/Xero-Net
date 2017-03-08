@@ -17,7 +17,7 @@ namespace CoreTests.Integration.AssetTypes
                 .Find()
                 .ToList();
 
-            Assert.Greater(0, list.Count);
+            Assert.Greater(list.Count, 0);
         }
 
       

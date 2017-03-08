@@ -42,9 +42,15 @@ namespace Xero.Api.Core.Endpoints
         public IEnumerable<Asset> Find(AssetStatus status)
         {
             string queryString = "status="+status.ToString().ToUpper();
-            List<Asset> assets = HandleResponseList(_client.Client.Get(_apiEndpointUrl, queryString));
-
-            return assets;
+            AssetsResponse response = HandleResponse(_client.Client.Get(_apiEndpointUrl, queryString));
+            List<Asset> assets = new List<Asset>();
+            assets.AddRange(response.Items);
+            while(response.Pagination.PageCount < response.Pagination.Page)
+            {
+                response = HandleResponse(_client.Client.Get(_apiEndpointUrl, queryString));
+                assets.AddRange(response.Items);
+            }
+            return response.Items;
         }
 
         public Asset Update(Asset item)
@@ -57,12 +63,12 @@ namespace Xero.Api.Core.Endpoints
             throw new NotImplementedException();
         }
 
-        private List<Asset> HandleResponseList(Infrastructure.Http.Response response)
+        private AssetsResponse HandleResponse(Infrastructure.Http.Response response)
         {
             if (response.StatusCode == HttpStatusCode.OK)
             {
 
-                var result = _client.JsonMapper.From<List<Asset>>(response.Body);
+                var result = _client.JsonMapper.From<AssetsResponse>(response.Body);
                 return result;
             }
 
@@ -71,18 +77,6 @@ namespace Xero.Api.Core.Endpoints
             return null;
         }
 
-        private Asset HandleResponse(Infrastructure.Http.Response response)
-        {
-            if (response.StatusCode == HttpStatusCode.OK)
-            {
-
-                var result = _client.JsonMapper.From<Asset>(response.Body);
-                return result;
-            }
-
-            _client.HandleErrors(response);
-
-            return null;
-        }
+       
     }
 }
